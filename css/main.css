@@ -157,6 +157,7 @@ p.lead {
 	font-size: 2rem;
 	line-height: 1.8;
 	color: #888888;
+	
 }
 @media only screen and (max-width:768px) {
 	p.lead {
@@ -1219,7 +1220,7 @@ header .logo a {
 /* navigation panel */
 #main-nav-wrap {
 	display: block;
-	width: 140%;
+	width: 135%;
 	font-family: "poppins-medium", sans-serif;
 	font-size: 1.5rem;
 	position: absolute;
@@ -1229,13 +1230,14 @@ header .logo a {
 
 /* dropdown nav */
 .main-navigation {
-	background: #000000;
-	padding: 24px 13px 42px;
+	background: #ffffff;
+	padding: 10px 10px 10px;
 	margin: 0;
 	width: 100%;
 	height: auto;
 	clear: both;
 	display: none;
+	border: 1px solid #000000;
 	
 }
 .main-navigation > li {
@@ -1247,7 +1249,7 @@ header .logo a {
 }
 .main-navigation li a {
 	display: block;
-	color: #FFFFFF;
+	color: #000000;
 	width: auto;
 	padding: 15px 0;
 	line-height: 16px;
@@ -1299,14 +1301,14 @@ header .logo a {
  * ------------------------------------------------------------------- 
  */
 #intro {
-	background: #151515 url(../images/intro-bg.jpg) no-repeat center bottom;
+	background: #151515 /*#url(../images/intro-bg.jpg)*/ no-repeat center bottom;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	background-size: cover;
 	background-attachment: fixed;
 	width: 100%;
 	height: 100%;
-	min-height: 720px;
+	min-height: 100px;
 	display: table;
 	position: relative;
 	text-align: center;
@@ -1499,8 +1501,8 @@ header .logo a {
  */
 #about {
 	background: #FFFFFF;
-	padding-top: 12rem;
-	padding-bottom: 15rem;
+	padding-top: 5rem;
+	padding-bottom: 5rem;
 }
 #about .section-intro {
 	margin-bottom: 3rem;
@@ -1508,25 +1510,25 @@ header .logo a {
 
 .intro-info {
 	margin-top: 4.2rem;
-	margin-right: -30px;
+	margin-right: -150px;
 	margin-left: -30px;
 }
 .intro-info img {
-	height: 17rem;
-	width: 17rem;
+	height: 25rem;
+	width: 25rem;
 	border-radius: 50%;
-	margin: .9rem 0 0 -6rem;
+	margin: -2.5rem 0 0 -10rem;
 	float: left;
 }
 .intro-info .lead {
 	text-align: justify;
-	padding-left: 13rem;
+	padding-left: 18.5rem;
 }
 
 .about-content {
 	position: relative;
 	text-align: left;
-	max-width: 850px;
+	max-width: 1000px;
 	margin-bottom: 3.6rem;
 }
 .about-content h3 {
@@ -1585,14 +1587,14 @@ header .logo a {
 }
 @media only screen and (max-width:768px) {
 	.intro-info img {
-		height: 7.8rem;
-		width: 7.8rem;
+		height: 9rem;
+		width: 9rem;
 	}
 	.intro-info .lead {
 		padding-left: 11rem;
 	}
 	.about-content h3 {
-		text-align: center;
+		text-align: justify;
 	}
 	.about-content .info-list, .about-content .skill-bars {
 		margin-bottom: 4.2rem;
@@ -1607,18 +1609,18 @@ header .logo a {
 }
 @media only screen and (max-width:600px) {
 	.intro-info {
-		text-align: center;
+		text-align: justify;
 		margin-top: 3rem;
 	}
 	.intro-info img {
-		height: 6.6rem;
-		width: 6.6rem;
+		height: 9rem;
+		width: 9rem;
 		float: none;
 		display: inline-block;
 	}
 	.intro-info .lead {
 		padding-left: 0;
-		text-align: center;
+		text-align: justify;
 	}
 }
 
@@ -1629,8 +1631,8 @@ header .logo a {
  * ------------------------------------------------------------------- 
  */
 #resume {
-	padding-top: 12rem;
-	padding-bottom: 12rem;
+	padding-top: 5rem;
+	padding-bottom: 5rem;
 }
 
 #resume .resume-header {
@@ -1641,7 +1643,7 @@ header .logo a {
 }
 
 #resume .resume-timeline {
-	max-width: 980px;
+	max-width: 1000px;
 }
 #resume .timeline-wrap {
 	position: relative;
@@ -1745,7 +1747,7 @@ header .logo a {
 		float: none;
 		width: auto;
 		padding-right: 15px;
-		text-align: left;
+		text-align: justify;
 	}
 	#resume .timeline-header h3 {
 		font-size: 2rem;
@@ -1800,8 +1802,8 @@ header .logo a {
  */
 #portfolio {
 	background: #FFFFFF;
-	padding-top: 12rem;
-	padding-bottom: 12rem;
+	padding-top: 5rem;
+	padding-bottom: 5rem;
 }
 #portfolio .folio-item {
 	padding: 0;
@@ -2146,11 +2148,7 @@ header .logo a {
 .services-list .service {
 	margin-bottom: 1.2rem;
 	padding: 0 30px;
-	display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px; /* Espaçamento entre as colunas */
-    flex-wrap: wrap; /* Garante que fique responsivo */
+	
 }
 .services-list .icon {
 	display: inline-block;
@@ -2371,8 +2369,8 @@ header .logo a {
  */
 #contact {
 	background: #151515;
-	padding-top: 12rem;
-	padding-bottom: 7.2rem;
+	padding-top: 5rem;
+	padding-bottom: 5rem;
 }
 #contact .section-intro h1 {
 	color: white;
