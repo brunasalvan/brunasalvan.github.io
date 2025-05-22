@@ -1132,7 +1132,7 @@ header .logo a {
 	float: left;
 	width: 30px;
 	height: 30px;
-	margin-left: 20px;
+	margin-left: -150px;
 	margin-top: 13px;
 	display: block;
 	position: relative;
@@ -1238,6 +1238,7 @@ header .logo a {
 	clear: both;
 	display: none;
 	border: 1px solid #000000;
+	margin-left: -15.5rem;
 	
 }
 .main-navigation > li {
