@@ -1657,28 +1657,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
    <script src="js/plugins.js"></script>
    <script src="js/main.js"></script>
 
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const text = "Bruna Salvan";
-    const target = document.getElementById("typed-text");
-    const cursor = document.querySelector(".cursor");
-    target.innerHTML = "";
-    let index = 0;
-    const speed = 150;
-
-    function typeWriter() {
-      if (index < text.length) {
-        target.innerHTML += text.charAt(index);
-        index++;
-        setTimeout(typeWriter, speed);
-      } else {
-        cursor.style.display = "none"; // Esconde o cursor depois
-      }
-    }
-
-    typeWriter();
-  });
-
 </body>
 
 </html>
