@@ -1541,14 +1541,14 @@ header .logo a {
 .about-content .info-list {
 	list-style: none;
 	margin-left: 0;
-	font-family: "poppins-bold", sans-serif;
+	font-family: "Raleway", sans-serif;
 }
 .about-content .info-list li {
 	padding: 0 0 1.5rem 0;
 	margin-bottom: .6rem;
 }
 .about-content .info-list li strong {
-	font-family: "poppins-bold", sans-serif;
+	font-family: "Raleway", sans-serif;
 	color: #313131;
 	text-transform: uppercase;
 	letter-spacing: .2rem;
