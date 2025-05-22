@@ -131,8 +131,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
    			<div class="col-twelve">
 
 	   			<!-- <h5>Olá, seja bem-vindo(a)!</h5> -->
-	   			<h1><br> Bruna Salvan </h1>
+<!-- 	   			<h1><br> Bruna Salvan </h1> -->
 
+				<h1><span id="typed-text"></span></h1>
+				
 	   			<p class="intro-position">
 	   				ANALISTA DE DADOS
 	   
@@ -1655,5 +1657,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
    <script src="js/plugins.js"></script>
    <script src="js/main.js"></script>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const text = "Bruna Salvan";
+    const target = document.getElementById("typed-text");
+    target.innerHTML = ""; // limpa qualquer conteúdo anterior
+
+    let index = 0;
+    const speed = 150; // menor número = mais rápido
+
+    function typeWriter() {
+      if (index < text.length) {
+        target.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeWriter, speed);
+      }
+    }
+
+    typeWriter();
+  });
+</script>
 </body>
 </html>
