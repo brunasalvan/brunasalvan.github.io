@@ -1541,6 +1541,7 @@ header .logo a {
 .about-content .info-list {
 	list-style: none;
 	margin-left: 0;
+	font-family: "poppins-bold", sans-serif;
 }
 .about-content .info-list li {
 	padding: 0 0 1.5rem 0;
