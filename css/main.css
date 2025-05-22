@@ -2731,7 +2731,7 @@ footer .copyright span:last-child::after {
   }
 	
 .menu-toggle {
-	margin-left: -10rem;
+	margin-left: 0;
     float: none;
     display: block;
     margin-top: 40px; /* Define o espaço maior acima */
