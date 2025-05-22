@@ -2714,4 +2714,19 @@ footer .copyright span:last-child::after {
 	background: #000000;
 }
 
+@media screen and (max-width: 768px) {
+  .intro-info img {
+    float: none;
+    display: block;
+    margin: 0 auto 2rem auto; /* Centraliza a imagem e dá espaço abaixo */
+    height: 18rem;
+    width: 18rem;
+  }
+
+  .intro-info .lead {
+    padding-left: 1.5rem;  /* Remove o padding grande */
+    padding-right: 1.5rem;
+    text-align: justify;
+  }
+}
 /*# sourceMappingURL=main.css.map */
