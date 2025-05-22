@@ -2731,16 +2731,18 @@ footer .copyright span:last-child::after {
   }
 	
 .menu-toggle {
-    margin-left: 0;
+	margin-left: -10rem;
     float: none;
-    margin: 10px auto;
     display: block;
+    margin-top: 40px; /* Define o espaço maior acima */
+    margin-bottom: 10px;
   }
   
   .main-navigation {
     margin-left: 0;
     border: none;
     padding: 10px;
+	border: 1px solid #000000;
   }
 }
 /*# sourceMappingURL=main.css.map */
