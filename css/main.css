@@ -1548,12 +1548,21 @@ header .logo a {
 	margin-bottom: .6rem;
 }
 .about-content .info-list li strong {
-	font-family: "Raleway", sans-serif;
+/* 	font-family: "Raleway", sans-serif;
 	color: #313131;
 	text-transform: uppercase;
 	letter-spacing: .2rem;
 	font-size: 1.5rem;
-	line-height: 3rem;
+	line-height: 3rem; */
+	position: absolute;
+	left: 0;
+	top: -3rem;
+	font-family: "poppins-bold", sans-serif;
+	color: #313131;
+	text-transform: uppercase;
+	letter-spacing: .2rem;
+	font-size: 1.5rem;
+	line-height: 2.4rem;
 }
 .about-content .info-list li span {
 	display: block;
