@@ -2729,5 +2729,18 @@ footer .copyright span:last-child::after {
     padding-right: 1.5rem;
     text-align: justify;
   }
+	
+.menu-toggle {
+    margin-left: 0;
+    float: none;
+    margin: 10px auto;
+    display: block;
+  }
+  
+  .main-navigation {
+    margin-left: 0;
+    border: none;
+    padding: 10px;
+  }
 }
 /*# sourceMappingURL=main.css.map */
