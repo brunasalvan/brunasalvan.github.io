@@ -1514,15 +1514,15 @@ header .logo a {
 	margin-left: -30px;
 }
 .intro-info img {
-	height: 25rem;
-	width: 25rem;
+	height: 30rem;
+	width: 30rem;
 	border-radius: 50%;
-	margin: -2.5rem 0 0 -8rem;
+	margin: -2.5rem 0 0 -7rem;
 	float: left;
 }
 .intro-info .lead {
 	text-align: justify;
-	padding-left: 18.5rem;
+	padding-left: 30rem;
 }
 
 .about-content {
