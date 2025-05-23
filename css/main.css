@@ -1230,7 +1230,7 @@ header .logo a {
 
 /* dropdown nav */
 .main-navigation {
-	background: rgba(255, 255, 255, 0.5); /* branco com leve transparência */	
+	background: rgba(255, 255, 255, 0.8); /* branco com leve transparência */	
 	padding: 10px 10px 10px;
 	margin: 0;
 	width: max-content;
