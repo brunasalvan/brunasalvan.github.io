@@ -1230,33 +1230,47 @@ header .logo a {
 
 /* dropdown nav */
 .main-navigation {
-	background: #ffffff;
+	background: rgba(255, 255, 255, 0.5); /* branco com leve transparência */	
 	padding: 10px 10px 10px;
 	margin: 0;
-	width: 100%;
+	width: max-content;
 	height: auto;
 	clear: both;
 	display: none;
 	border: 1px solid #000000;
 	margin-left: -15.5rem;
-	
+	transition: all 0.3s ease-in-out;
+  	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6); /* sombra suave */
+	border-radius: 12px;
 }
+
 .main-navigation > li {
 	display: block;
 	height: auto;
 	text-align: left;
 	padding: 0;
-	
+	list-style: none;
+  	margin-bottom: 10px;
 }
+
+.main-navigation li:last-child {
+  margin-bottom: 0;
+}
+
 .main-navigation li a {
-	display: block;
-	color: #000000;
-	width: auto;
-	padding: 15px 0;
-	line-height: 16px;
-	border: none;
-	
+  display: block;
+  color: #000000;
+  width: auto;
+  line-height: 16px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  padding: 10px 0;
+  transition: color 0.2s ease;
+  text-decoration: none;
+  transition: color 0.3s;
 }
+
 .main-navigation li a:hover {
 	color: #FF0077;
 	padding-left: 1rem;
@@ -2743,8 +2757,7 @@ footer .copyright span:last-child::after {
     margin-left: 0;
     border: none;
     padding: 10px;
-	border: 1px solid #000000;
-  }
+	  border: 1px solid #000000;
 }
 
 .cursor {
