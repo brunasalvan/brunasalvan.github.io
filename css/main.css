@@ -2758,6 +2758,7 @@ footer .copyright span:last-child::after {
     border: none;
     padding: 10px;
 	  border: 1px solid #000000;
+  }
 }
 
 .cursor {
