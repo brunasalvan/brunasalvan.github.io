@@ -1239,7 +1239,7 @@ header .logo a {
 	display: none;
 	border: 1px solid #000000;
 	margin-left: -15.5rem;
-	transition: all 0.3s ease-in-out;
+	transition: opacity 0.3s ease, transform 0.3s ease;
   	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6); /* sombra suave */
 	border-radius: 12px;
 }
