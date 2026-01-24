@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bruna Salvan | Analista de Mídia & Dados</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --accent: #38bdf8;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .glass:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .floating-contact {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .floating-contact:hover {
+            transform: scale(1.1);
+        }
+
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+        }
+
+        /* Modal Side-over Logic */
+        #project-modal {
+            transition: visibility 0s, opacity 0.3s linear;
+        }
+        
+        .modal-content-panel {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #project-modal.active .modal-content-panel {
+            transform: translateX(0);
+        }
+
+        /* Carousel Styles */
+        .carousel-container {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            gap: 1.5rem;
+            cursor: grab;
+            user-select: none;
+        }
+
+        .carousel-container:active {
+            cursor: grabbing;
+        }
+        
+        .carousel-item-wrapper {
+            flex: 0 0 calc(33.333% - 1rem);
+            min-width: calc(33.333% - 1rem);
+        }
+
+        .carousel-item-wrapper img {
+            pointer-events: none; /* Previne arraste nativo da imagem no desktop */
+        }
+
+        @media (max-width: 1024px) {
+            .carousel-item-wrapper {
+                flex: 0 0 calc(50% - 0.75rem);
+                min-width: calc(50% - 0.75rem);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .carousel-item-wrapper {
+                flex: 0 0 100%;
+                min-width: 100%;
+            }
+        }
+
+        /* Custom Navigation Styling */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 30;
+            opacity: 0;
+            transition: opacity 0.4s ease, background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .group-hover-visible:hover .nav-btn {
+            opacity: 1;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .icon-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="selection:bg-sky-500 selection:text-white">
+
+    <!-- Modal Lateral de Detalhes (Side-over) -->
+    <div id="project-modal" class="fixed inset-0 z-[150] invisible opacity-0 flex justify-end">
+        <div class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="modal-content-panel relative w-full max-w-lg h-full bg-slate-800 shadow-2xl p-8 overflow-y-auto">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-2xl transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="modal-body">
+                <!-- Conteúdo dinâmico via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão Flutuante de Contato -->
+    <a href="mailto:brunasalvan@gmail.com" class="floating-contact bg-sky-500 text-white p-4 rounded-full shadow-lg flex items-center justify-center group" title="Enviar e-mail">
+        <i class="fas fa-envelope text-xl"></i>
+        <span class="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-2 transition-all duration-300 ease-in-out whitespace-nowrap">Enviar e-mail</span>
+    </a>
+
+    <div class="max-w-5xl mx-auto px-6 py-12">
+        
+        <!-- Header -->
+        <header class="text-center mb-16 fade-in" style="animation-delay: 0.1s;">
+            <div class="mb-6 relative inline-block">
+                <img src="https://brunasalvan.github.io/images/profile-pic.jpg" alt="Bruna Salvan" class="profile-img mx-auto" onerror="this.src='https://ui-avatars.com/api/?name=Bruna+Salvan&background=0ea5e9&color=fff'">
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold mb-2 tracking-tight text-white">Bruna Salvan</h1>
+            <p class="text-sky-400 text-xl font-medium mb-6 tracking-wide">Analista de Mídia & Dados</p>
+            
+            <div class="flex justify-center gap-6 mb-8">
+                <a href="https://linkedin.com/in/brunasalvan" target="_blank" class="text-text-muted hover:text-sky-400 text-2xl transition-colors"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/brunasalvan" target="_blank" class="text-text-muted hover:text-white text-2xl transition-colors"><i class="fab fa-github"></i></a>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://brunasalvan.github.io/pdf/cv-brunasalvan.pdf" target="_blank" class="bg-sky-600 hover:bg-sky-500 text-white px-6 py-3 rounded-lg font-semibold transition-all flex items-center gap-2 shadow-lg shadow-sky-900/20">
+                    <i class="fas fa-file-download"></i> Baixar CV (PDF)
+                </a>
+                <a href="#experiencia" class="glass px-6 py-3 rounded-lg font-semibold hover:bg-slate-700 transition-all text-white">Experiência</a>
+                <a href="#projetos" class="bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 rounded-lg font-semibold transition-all flex items-center gap-2 border border-slate-700">
+                    <i class="fas fa-project-diagram"></i> Projetos
+                </a>
+            </div>
+        </header>
+
+        <!-- Resumo Profissional -->
+        <section class="mb-16 fade-in" style="animation-delay: 0.2s;">
+            <div class="glass p-8 rounded-2xl border-l-4 border-l-sky-500">
+                <h2 class="text-2xl font-bold mb-4 flex items-center gap-2 text-white">
+                    <i class="fas fa-bullseye text-sky-400"></i> Resumo Profissional
+                </h2>
+                <p class="text-slate-300 leading-relaxed text-justify">
+                    Atuação em Mídia de Performance e Business Intelligence, com sólida trajetória na extração e análise de indicadores para suporte à tomada de decisão estratégica e otimização de ROI. Foco em planejamento e gestão de campanhas (Meta Ads, Google Ads, TikTok Ads, Pinterest Ads e LinkedIn Ads) com foco em geração de leads e escala de resultados. Possui conhecimento técnico em Power BI, SQL e Python (Pandas/Seaborn) para modelagem de dados e criação de dashboards interativos. Atua com liderança técnica, monitorização de KPIs e gestão de stakeholders, unindo inteligência de dados à performance multicanal para garantir eficiência operacional e melhoria contínua de conversão.
+                </p>
+            </div>
+        </section>
+
+        <!-- Habilidades -->
+        <section class="mb-16 fade-in" style="animation-delay: 0.3s;">
+            <h2 class="text-2xl font-bold mb-8 text-center text-white">Core Stack & Ferramentas</h2>
+            <div class="space-y-12">
+                <div>
+                    <h3 class="text-sky-400 font-bold mb-6 flex items-center justify-center gap-2"><i class="fas fa-ad"></i> Mídia de Performance</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="glass flex flex-col items-center justify-center p-4 rounded-xl"><i class="fab fa-facebook text-3xl mb-2 text-blue-500"></i><span class="text-xs font-semibold">Meta Ads</span></div>
+                        <div class="glass flex flex-col items-center justify-center p-4 rounded-xl"><i class="fab fa-google text-3xl mb-2 text-red-500"></i><span class="text-xs font-semibold">Google Ads</span></div>
+                        <div class="glass flex flex-col items-center justify-center p-4 rounded-xl"><i class="fab fa-tiktok text-3xl mb-2 text-white"></i><span class="text-xs font-semibold">TikTok Ads</span></div>
+                        <div class="glass flex flex-col items-center justify-center p-4 rounded-xl"><i class="fas fa-chart-line text-3xl mb-2 text-green-500"></i><span class="text-xs font-semibold">GA4 / GTM</span></div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-sky-400 font-bold mb-6 flex items-center justify-center gap-2"><i class="fas fa-database"></i> Análise de Dados</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="glass icon-card rounded-xl"><i class="fas fa-table text-3xl mb-2 text-blue-400"></i><span class="text-xs font-semibold text-white">SQL</span></div>
+                        <div class="glass icon-card rounded-xl"><i class="fas fa-chart-bar text-3xl mb-2 text-yellow-500"></i><span class="text-xs font-semibold text-white">Power BI</span></div>
+                        <div class="glass icon-card rounded-xl"><i class="fab fa-python text-3xl mb-2 text-sky-300"></i><span class="text-xs font-semibold text-white">Python</span></div>
+                        <div class="glass icon-card rounded-xl"><i class="fas fa-file-excel text-3xl mb-2 text-green-500"></i><span class="text-xs font-semibold text-white">Excel/Sheets</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experiência -->
+        <section id="experiencia" class="mb-16 fade-in" style="animation-delay: 0.4s;">
+            <h2 class="text-2xl font-bold mb-8 flex items-center gap-2 text-white"><i class="fas fa-history text-sky-400"></i> Trajetória Profissional</h2>
+            
+            <!-- Agencia Influencia -->
+            <div class="relative border-l-2 border-sky-500 pl-8 mb-12">
+                <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-sky-500"></div>
+                <div class="mb-4">
+                    <h3 class="text-xl font-bold text-white">Analista de Mídia Jr</h3>
+                    <p class="text-sky-400 font-medium">
+                        <a href="https://www.agenciainfluencia.com.br/sobre-nos/" target="_blank" class="hover:text-white transition-colors underline decoration-sky-500/30 underline-offset-4">Agência Influência</a> | Jun 2025 - Atual
+                    </p>
+                </div>
+                <ul class="space-y-3 text-slate-300 list-disc list-outside ml-4 text-sm md:text-base">
+                    <li>Planejamento, execução e gestão de campanhas de mídia paga em Meta Ads, Google Ads, TikTok Ads, Pinterest Ads e LinkedIn Ads, focando em ROI e geração de leads.</li>
+                    <li>Liderança técnica e gestão de equipe de mídia, atuando na delegação estratégica de atividades, criação de estratégias de performance e gestão de fluxos operacionais para escala de resultados.</li>
+                    <li>Monitorização diária de performance e análise profunda de dados em e-commerces, sites e landing pages para identificar gargalos no funil de conversão.</li>
+                    <li>Gestão de relacionamento e interface direta com stakeholders, conduzindo reuniões estratégicas e comunicação multicanal para alinhamento tático de objetivos.</li>
+                </ul>
+            </div>
+
+            <!-- HostGator -->
+            <div class="relative border-l-2 border-slate-700 pl-8 mb-12">
+                <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-700"></div>
+                <div class="mb-4">
+                    <h3 class="text-xl font-bold text-white">Assistente de Suporte N1</h3>
+                    <p class="text-slate-400 font-medium">
+                        <a href="https://www.hostgator.com.br/" target="_blank" class="hover:text-sky-400 transition-colors underline decoration-slate-500/30 underline-offset-4">HostGator Latam</a> | Nov 2022 - Jun 2025
+                    </p>
+                </div>
+                <ul class="space-y-2 text-slate-300 list-disc list-outside ml-4 text-sm">
+                    <li>Suporte técnico especializado em infraestrutura de servidores Linux e gestão de domínios via Zendesk.</li>
+                    <li>Acompanhamento e monitorização de KPIs operacionais críticos como SLA, CSAT e NPS.</li>
+                </ul>
+            </div>
+
+            <!-- Nohs Somos -->
+            <div class="relative border-l-2 border-slate-700 pl-8">
+                <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-700"></div>
+                <div class="mb-4">
+                    <h3 class="text-xl font-bold text-white">Analista de Dados</h3>
+                    <p class="text-slate-400 font-medium">
+                        <a href="https://nohssomos.com.br/quem-nohs-somos-2/" target="_blank" class="hover:text-sky-400 transition-colors underline decoration-slate-500/30 underline-offset-4">Nohs Somos</a> | Ago 2022 - Dez 2023
+                    </p>
+                </div>
+                <ul class="space-y-2 text-slate-300 list-disc list-outside ml-4 text-sm">
+                    <li>Extração e análise de indicadores utilizando PostgreSQL (Bar de Respeito - Ambev).</li>
+                    <li>Criação de dashboards dinâmicos no Power BI para visualização de taxas de retorno.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Formação Acadêmica -->
+        <section id="formacao" class="mb-16 fade-in" style="animation-delay: 0.45s;">
+            <h2 class="text-2xl font-bold mb-8 flex items-center gap-2 text-white"><i class="fas fa-graduation-cap text-sky-400"></i> Formação Acadêmica</h2>
+            
+            <div class="space-y-12">
+                <!-- MBA -->
+                <div class="relative border-l-2 border-slate-700 pl-8">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-700"></div>
+                    <div class="mb-2">
+                        <h3 class="text-lg font-bold text-white">MBA - Business Intelligence</h3>
+                        <p class="text-sky-400 font-medium text-sm">Centro Universitário UniAmérica Descomplica | Mai. 2025</p>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed">Foco em análise de dados, tomada de decisões estratégicas e otimização de processos para gerar resultados mais assertivos e sustentáveis para os negócios.</p>
+                </div>
+
+                <!-- Pós -->
+                <div class="relative border-l-2 border-slate-700 pl-8">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-700"></div>
+                    <div class="mb-2">
+                        <h3 class="text-lg font-bold text-white">Pós-graduação - Data Warehouse e Business Intelligence</h3>
+                        <p class="text-sky-400 font-medium text-sm">Universidade do Vale do Itajaí - Univali | Dez. 2022</p>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed">Gestão estratégica em TI, inteligência competitiva, arquitetura de DW, ETL, modelagem, mineração, visualização e governança de dados.</p>
+                </div>
+
+                <!-- Bacharelado -->
+                <div class="relative border-l-2 border-slate-700 pl-8">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-700"></div>
+                    <div class="mb-2">
+                        <h3 class="text-lg font-bold text-white">Bacharelado - Biblioteconomia</h3>
+                        <p class="text-sky-400 font-medium text-sm">Universidade Federal de Santa Catarina - UFSC | Dez. 2019</p>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed">Organização, gestão e recuperação da informação, sistemas de informação e tecnologias para otimização do acesso e armazenamento de dados.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projetos Section com Carrossel Arrastável -->
+        <section id="projetos" class="mb-16 fade-in group-hover-visible" style="animation-delay: 0.5s;">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold flex items-center gap-2 text-white">
+                    <i class="fas fa-project-diagram text-sky-400"></i> Projetos em Destaque
+                </h2>
+            </div>
+            
+            <div class="relative">
+                <!-- Seta Esquerda -->
+                <button id="prevBtn" class="nav-btn left-[-20px] lg:left-[-40px] bg-slate-800/80 hover:bg-sky-500 text-white w-12 h-12 rounded-full flex items-center justify-center border border-slate-700 shadow-2xl backdrop-blur-md disabled:hidden">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <!-- Track de Projetos -->
+                <div id="carouselWrapper" class="overflow-hidden">
+                    <div id="carouselTrack" class="carousel-container">
+                        <!-- Cards inseridos via JS -->
+                    </div>
+                </div>
+
+                <!-- Seta Direita -->
+                <button id="nextBtn" class="nav-btn right-[-20px] lg:right-[-40px] bg-slate-800/80 hover:bg-sky-500 text-white w-12 h-12 rounded-full flex items-center justify-center border border-slate-700 shadow-2xl backdrop-blur-md disabled:hidden">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <footer class="text-center pt-12 border-t border-slate-800 text-slate-500 text-sm">
+            <p>Bruna Salvan &bull; Analista de Mídia & Dados</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const projects = [
+            {
+                id: 1,
+                title: "Custos de Produção - Estofaria",
+                category: "Power BI / ETL",
+                image: "https://brunasalvan.github.io/images/portfolio/custos_estofaria2.jpg",
+                description: "Análise de custos administrativos, custos de mão de obra e obra prima para o cliente, empresa de estofados. Foi realizado todo o processo de ETL (Extração de dados do Excel, Transformação e Carga no Power Query) e visualização final dos principais indicadores em dashboard no Power BI.",
+                link: "https://brunasalvan.github.io/pdf/others/dashboard_estofaria.pdf"
+            },
+            {
+                id: 2,
+                title: "Vendas Target",
+                category: "BI / Power BI",
+                image: "https://brunasalvan.github.io/images/portfolio/vendas_target.png",
+                description: "Análise de dados a partir de um dataset de vendas da loja Target no Brasil. Foi realizado todo o processo de ETL (Extração, Transformação e Carga) e visualização final dos principais indicadores em dashboard no Power BI.",
+                link: "https://github.com/brunasalvan/target_sales/blob/main/SOBRE.md"
+            },
+            {
+                id: 3,
+                title: "Nohs Somos & Ambev",
+                category: "Dashboard / Ambev",
+                image: "https://brunasalvan.github.io/images/portfolio/bar_de_respeito2.png",
+                description: "Nesse projeto criei um Dashboard interativo com indicadores de acesso e uso da plataforma 'Bar de Respeito'.",
+                link: "https://brunasalvan.github.io/pdf/others/bar_de_respeito.pdf"
+            },
+            {
+                id: 4,
+                title: "Limpeza de Reviews",
+                category: "Data Cleaning / Python",
+                image: "https://brunasalvan.github.io/images/portfolio/limpeza_de_reviews2.png",
+                description: "Tratamento do flood de comentários nas avaliações dos estabelecimentos do mapa Bar de Respeito visando manter a credibilidade da plataforma.",
+                link: "https://github.com/brunasalvan/platform_review_cleansing/blob/main/SOBRE.md"
+            },
+            {
+                id: 5,
+                title: "Análise de Vendas Olist",
+                category: "SQL Server / Insights",
+                image: "https://brunasalvan.github.io/images/portfolio/vendas_olist2.png",
+                description: "Análise do conjunto de dados de vendas da Olist utilizando queries de consulta no SQL Server em busca de insights comerciais.",
+                link: "https://github.com/brunasalvan/SQL_Analise_de_Dados_Vendas/blob/main/SOBRE.md"
+            },
+            {
+                id: 6,
+                title: "Importação & Exportação",
+                category: "Power BI / NCM",
+                image: "https://brunasalvan.github.io/images/portfolio/imp_exp_brasil2.png",
+                description: "Análise de dados de importação e exportação de produtos de classificação NCM 61 realizadas no período de 2019 a 2021 pelo Brasil.",
+                link: "https://github.com/brunasalvan/PowerBI_Analise_Dados_Exp_Imp/blob/main/SOBRE.md"
+            }
+        ];
+
+        let currentGroup = 0;
+        const track = document.getElementById('carouselTrack');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+
+        // Drag functionality variables
+        let isDragging = false;
+        let startPos = 0;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+        let animationID = 0;
+        let currentIndex = 0;
+
+        function renderCarousel() {
+            track.innerHTML = projects.map(p => `
+                <div class="carousel-item-wrapper">
+                    <div class="glass rounded-xl overflow-hidden group cursor-pointer h-full border-slate-700/50" onclick="openProjectDetail(${p.id})">
+                        <div class="relative h-44 overflow-hidden">
+                            <img src="${p.image}" class="w-full h-full object-cover transition-transform group-hover:scale-110">
+                            <div class="absolute inset-0 bg-sky-900/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="bg-white text-slate-900 px-4 py-2 rounded-full font-bold text-xs uppercase shadow-xl tracking-wider">Detalhes</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <span class="text-[10px] text-sky-400 font-bold uppercase tracking-widest mb-1 block">${p.category}</span>
+                            <h3 class="font-bold text-lg text-white leading-tight line-clamp-2">${p.title}</h3>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentGroup * 100}%)`;
+            
+            const itemsPerPage = window.innerWidth < 640 ? 1 : (window.innerWidth < 1024 ? 2 : 3);
+            const maxGroups = Math.ceil(projects.length / itemsPerPage);
+
+            prevBtn.disabled = currentGroup === 0;
+            nextBtn.disabled = currentGroup >= maxGroups - 1;
+        }
+
+        nextBtn.addEventListener('click', () => { 
+            const itemsPerPage = window.innerWidth < 640 ? 1 : (window.innerWidth < 1024 ? 2 : 3);
+            if (currentGroup < Math.ceil(projects.length / itemsPerPage) - 1) {
+                currentGroup++; 
+                updateCarousel(); 
+            }
+        });
+        
+        prevBtn.addEventListener('click', () => { 
+            if (currentGroup > 0) {
+                currentGroup--; 
+                updateCarousel(); 
+            }
+        });
+
+        // --- Drag & Touch Logic ---
+        track.addEventListener('touchstart', touchStart);
+        track.addEventListener('touchend', touchEnd);
+        track.addEventListener('touchmove', touchMove);
+        track.addEventListener('mousedown', touchStart);
+        track.addEventListener('mouseup', touchEnd);
+        track.addEventListener('mouseleave', touchEnd);
+        track.addEventListener('mousemove', touchMove);
+
+        function touchStart(event) {
+            isDragging = true;
+            startPos = getPositionX(event);
+            track.style.transition = 'none'; // Desabilita animação suave durante o arraste
+        }
+
+        function touchMove(event) {
+            if (isDragging) {
+                const currentPosition = getPositionX(event);
+                const diff = currentPosition - startPos;
+                const baseTranslate = -(currentGroup * track.offsetWidth);
+                track.style.transform = `translateX(${baseTranslate + diff}px)`;
+            }
+        }
+
+        function touchEnd() {
+            if (!isDragging) return;
+            isDragging = false;
+            track.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            
+            const currentPosition = track.style.transform.match(/translateX\((.*)px\)/);
+            const currentX = currentPosition ? parseFloat(currentPosition[1]) : 0;
+            const baseTranslate = -(currentGroup * track.offsetWidth);
+            const movedBy = currentX - baseTranslate;
+
+            // Se arrastou mais de 100px, muda o grupo
+            if (movedBy < -100) {
+                const itemsPerPage = window.innerWidth < 640 ? 1 : (window.innerWidth < 1024 ? 2 : 3);
+                if (currentGroup < Math.ceil(projects.length / itemsPerPage) - 1) currentGroup++;
+            } else if (movedBy > 100) {
+                if (currentGroup > 0) currentGroup--;
+            }
+
+            updateCarousel();
+        }
+
+        function getPositionX(event) {
+            return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+        }
+
+        // --- Modal & General ---
+        function openProjectDetail(id) {
+            // Previne abrir modal se estiver arrastando (distância mínima)
+            if (isDragging) return; 
+
+            const p = projects.find(x => x.id === id);
+            const modal = document.getElementById('project-modal');
+            const body = document.getElementById('modal-body');
+            body.innerHTML = `
+                <img src="${p.image}" class="w-full rounded-xl mb-6 shadow-2xl border border-slate-700">
+                <span class="text-sky-400 font-bold text-xs uppercase tracking-widest">${p.category}</span>
+                <h2 class="text-2xl font-bold text-white mb-4 leading-tight">${p.title}</h2>
+                <div class="h-1 w-12 bg-sky-500 mb-6"></div>
+                <p class="text-slate-300 leading-relaxed mb-10 text-sm whitespace-pre-line">${p.description}</p>
+                <a href="${p.link}" target="_blank" class="bg-sky-600 hover:bg-sky-500 text-white py-4 px-6 rounded-xl text-center font-bold block shadow-lg shadow-sky-900/20 transition-all active:scale-95">
+                    <i class="fas fa-external-link-alt mr-2"></i> Acessar Projeto Completo
+                </a>
+            `;
+            modal.classList.remove('invisible', 'opacity-0');
+            modal.classList.add('active', 'opacity-100');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('project-modal');
+            modal.classList.remove('active', 'opacity-100');
+            setTimeout(() => {
+                modal.classList.add('invisible', 'opacity-0');
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+
+        renderCarousel();
+
+        window.addEventListener('resize', () => {
+            currentGroup = 0;
+            updateCarousel();
+        });
+    </script>
+</body>
+</html>
